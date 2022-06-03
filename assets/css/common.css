@@ -1,0 +1,235 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+@import url("font.css");
+/* common */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#wrap {
+  min-height: 100%;
+  background-color: #e7e7e7;
+}
+
+.clearfix::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.blind {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.page_progressbar_bg {
+  position: fixed;
+  z-index: 9999;
+}
+
+.page_progressbar_bg.horizontal {
+  width: 100%;
+  height: 3px;
+  top: 0;
+  left: 0;
+}
+
+.page_progressbar_bg .page_progressbar {
+  width: 0;
+  height: 100%;
+  background-color: tomato;
+  -webkit-transition: width 0.1s;
+  transition: width 0.1s;
+}
+
+/* header */
+#header {
+  position: relative;
+  z-index: 999;
+  background-color: #333;
+  color: #fff;
+  padding-left: 60px;
+}
+
+#header .menu_btn {
+  display: inline-block;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  color: #fff;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 1.6em;
+}
+
+#header .logo {
+  height: 50px;
+  line-height: 50px;
+  font-family: "CookieRun";
+  font-size: 1.7em;
+}
+
+#header .link_list {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#header .link_list li {
+  float: left;
+  margin-left: 15px;
+}
+
+#header .link_list li a {
+  display: block;
+  color: #fff;
+  font-family: "Maplestory";
+  font-size: 1.25em;
+}
+
+/* content */
+#content {
+  padding: 30px 290px 30px 265px;
+  -webkit-transition: padding 0.3s;
+  transition: padding 0.3s;
+}
+
+#content.extend {
+  padding-left: 30px;
+}
+
+#content.extend #leftMenu {
+  left: -235px;
+}
+
+#content #leftMenu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 235px;
+  height: 100%;
+  padding-top: 100px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#content #leftMenu .left_menu li {
+  margin: 0 20px 15px;
+}
+
+#content #leftMenu .left_menu li a {
+  display: inline-block;
+  font-family: "Maplestory";
+  font-size: 1.2em;
+}
+
+#content #realContent {
+  width: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+}
+
+#content #realContent #rightMenu {
+  position: fixed;
+  left: 100%;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  margin-left: -260px;
+  padding-top: 100px;
+}
+
+#content #realContent #rightMenu .right_menu li {
+  margin-bottom: 10px;
+}
+
+#content #realContent #rightMenu .right_menu li a {
+  display: inline-block;
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+#content #realContent #rightMenu .right_menu li.active {
+  position: relative;
+}
+
+#content #realContent #rightMenu .right_menu li.active a::before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 3px;
+  height: 15px;
+  background-color: #141414;
+}
+
+#content #realContent .container {
+  padding: 30px;
+}
+
+#content #realContent .container h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#content #realContent .container h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 1280px) {
+  #content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  #content #leftMenu {
+    border-right: 1px solid #f3f3f3;
+  }
+  #content #realContent #rightMenu {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #header {
+    padding-left: 50px;
+  }
+  #header .menu_btn {
+    font-size: 1.3em;
+  }
+  #header .logo {
+    font-size: 1.2em;
+  }
+  #header .link_list li {
+    margin-left: 10px;
+  }
+  #header .link_list li a {
+    font-size: 1em;
+  }
+  #content {
+    padding: 15px;
+  }
+  #content.extend {
+    padding-left: 15px;
+  }
+  #content #leftMenu .left_menu li a {
+    font-size: 1em;
+  }
+  #content #realContent .container {
+    padding: 15px;
+  }
+}
+/*# sourceMappingURL=common.css.map */
