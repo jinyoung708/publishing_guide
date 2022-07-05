@@ -1,6 +1,5 @@
 $(function(){
-    var $content = $("#content"),
-        $leftMenu = $("#leftMenu");
+    var $content = $("#content");
 
     /* menu btn */
     $(".menu_btn").on("click", function(){
@@ -53,5 +52,19 @@ $(function(){
                 $('.page_progressbar').css('height',progressCurent + "%")
         }
     }
+
+
+    /* code block */
+    var $codeblock = $("pre > code").parent();
+    $codeblock.before("<div class='codeBlock_stylish'></div>");
+
+    var str = $codeblock.find("code").html();
+    str = str.replace(/!/g,"&#33;");
+    str = str.replace(/</g,"&lt;");
+    str = str.replace(/>/g,"&gt;");
+    $codeblock.find("code").html(str);
+
+    hljs.highlightAll();
+    hljs.initLineNumbersOnLoad();
 });
 
