@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {position: fixed; left: 0; top: 0; width: 100%;}
+        .content {padding-top: 100px;}
+        .tab_con > div {height: 500px;}
+        .tab2 {font-size: 0; margin-bottom: 100px;}
+        .tab2 > li {display: inline-block; width: 33.3%; text-align: center;}
+        .tab2 > li a { font-size: 20px;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <header style="height: 100px; background-color: pink;">header</header>
+    <div class="content">
+        <ul class="tab2">
+            <li><a href="#" data-item-num="con1">내용1</a></li>
+            <li><a href="#" data-item-num="con2">내용2</a></li>
+            <li><a href="#" data-item-num="con3">내용3</a></li>
+            <li><a href="#" data-item-num="con4">내용4</a></li>
+            <li><a href="#" data-item-num="con5">내용5</a></li>
+            <li><a href="#" data-item-num="con6">내용6</a></li>
+        </ul>
+        <div class="tab_con">
+            <div class="con1" style="background-color: skyblue;">내용1</div>
+            <div class="con2">내용2</div>
+            <div class="con3" style="background-color: #eee;">내용3</div>
+            <div class="con4" style="background-color: skyblue;">내용4</div>
+            <div class="con5">내용5</div>
+            <div class="con6" style="background-color: #eee;">내용6</div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $(".tab2 > li > a").click(function(){
+                var num = $(this).attr("data-item-num");
+                var move = $(".tab_con").find("." + num).offset().top - $("header").height();
+                console.log(move);
+                $("html, body").animate({
+                    scrollTop: move
+                }, 500);
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
