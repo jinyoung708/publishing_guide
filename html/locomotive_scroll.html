@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/locomotive-scroll.min.css">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <style>
+        html {overflow: hidden; font-family: 'Kanit', sans-serif;}
+        * {margin: 0; padding: 0;}
+        div[data-scroll-section] { height: 100vh; display: flex; justify-content: center; align-items: center; }
+
+        /* section color */
+        div[data-scroll-section]:first-child { background: #ececec; }
+        div[data-scroll-section]:nth-child(2) { height: 220vh; background: #acd3f5; }
+        div[data-scroll-section]:nth-child(3) { background: #ccc; }
+        .section {position: relative;}
+        .container {position: absolute; left: 0; right: 0; bottom: 0; top: 0;}
+        .item {font-size: 10vw; font-weight: 600; line-height: 1; position: absolute; text-transform: uppercase; white-space: nowrap;}
+        .item1 {top: 33%; transform: translateX(-50vw) rotate(26deg);}
+        .item2 {top: 45%;}
+        .item3 {top: 55%; transform: rotate(9deg);}
+        .item4 {top: 68%; transform: translateX(-50vw) rotate(-19deg);}
+        .item5 {top: 63%; transform: translateX(-10vw) rotate(3deg);}
+        .item .inner {display: block; padding: 0 20px; line-height: 1; background-color: #fff;}
+        .wave {font-size: 0;}
+        .wave span {display: inline-block; min-width: 0.3em; font-size: 4.375rem;}
+        
+    </style>
+</head>
+<body>
+    <div data-scroll-container>
+        <div data-scroll-section>
+            <h1 data-scroll data-scroll-speed="1">Hey</h1>
+            <p data-scroll data-scroll-speed="2">👋</p>
+        </div>
+        <div data-scroll-section class="section">
+            <div id="direction" class="container">
+                <div class="item item1">
+                    <span class="inner" data-scroll data-scroll-direction="horizontal" data-scroll-speed="6" data-scroll-target="#direction">I'm moving in this direction</span>
+                </div>
+                <div class="item item2">
+                    <span class="inner" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-8" data-scroll-target="#direction">And in this direction</span>
+                </div>
+                <div class="item item3">
+                    <span class="inner" data-scroll data-scroll-direction="horizontal" data-scroll-speed="9" data-scroll-target="#direction">Sooo customizable. Right?</span>
+                </div>
+                <div class="item item4">
+                    <span class="inner" data-scroll data-scroll-direction="horizontal" data-scroll-speed="15" data-scroll-target="#direction">I can also go in this direction</span>
+                </div>
+                <div class="item item5">
+                    <span class="inner" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-20" data-scroll-target="#direction">Ok, enough!!!!</span>
+                </div>
+            </div>
+        </div>
+        <div data-scroll-section>
+            <div>
+                <span data-scroll data-scroll-speed="1">😬</span>
+                <h2 data-scroll data-scroll-speed="2">What's up?</h2>
+                <p class="wave" data-scroll>
+                    <span data-scroll data-scroll-delay="0.13" data-scroll-speed="6">B</span>
+                    <span data-scroll data-scroll-delay="0.12" data-scroll-speed="6">Y</span>
+                    <span data-scroll data-scroll-delay="0.11" data-scroll-speed="6"> </span>
+                    <span data-scroll data-scroll-delay="0.1" data-scroll-speed="6">L</span>
+                    <span data-scroll data-scroll-delay="0.09" data-scroll-speed="6">E</span>
+                    <span data-scroll data-scroll-delay="0.08" data-scroll-speed="6">T</span>
+                    <span data-scroll data-scroll-delay="0.07" data-scroll-speed="6">T</span>
+                    <span data-scroll data-scroll-delay="0.06" data-scroll-speed="6">E</span>
+                    <span data-scroll data-scroll-delay="0.05" data-scroll-speed="6">R</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/locomotive-scroll.min.js"></script>
+    <script>
+        (function () {
+            const scroll = new LocomotiveScroll({
+                el: document.querySelector('[data-scroll-container]'),
+                smooth: true
+            });
+        })();
+    </script>
+</body>
+</html>
