@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <style>
+        @import url('https://unpkg.com/swiper@8/swiper-bundle.min.css');
+        * {margin: 0; padding: 0;}
+        img {max-width: 100%;}
+        .layer_popup_wrap {
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+
+        .layer_popup_wrap .bg {
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.75;
+        }
+
+        .layer_popup_wrap .layer_popup {
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            width: 501px;
+            max-width: 100%;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+            background-color: #f1f1f1;
+            transform: translate(-50%, -50%);
+        }
+
+        .layer_popup_wrap .layer_popup .close_btn {position: absolute; right: 0; top: 0; width: 20px; height: 20px; z-index: 10;}
+
+        .layer_popup_wrap.show {
+            height: auto;
+            visibility: visible;
+        }
+
+        .layer_popup_wrap.show .layer_popup {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="layer_popup_wrap">
+        <div class="bg"></div>
+        <!-- 2022-07-25 팝업 슬라이더 :: S -->
+        <div class="layer_popup popup_swiper">
+            <button type="button" class="close_btn" id="close">X</button>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="../assets/images/maddle-_2FQXn2QSpU-unsplash.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="../assets/images/maddle-_2FQXn2QSpU-unsplash.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="../assets/images/maddle-_2FQXn2QSpU-unsplash.jpg" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <label class="check_ipt">오늘 하루 열지 않기 <input type='checkbox' name='chkbox' id='todaycloseyn0' value='Y'></label>
+            <script>
+                var popupSwiper = new Swiper(".popup_swiper .swiper", {
+                    loop: true,
+                    pagination: {
+                        el: ".popup_swiper .swiper .swiper-pagination",
+                        clickable: true,
+                    },
+                });
+
+                // 쿠키 가져오기
+                var getCookie = function (cname) {
+                    var name = cname + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0; i<ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1);
+                        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+                    }
+                    return "";
+                }
+
+                // 24시간 기준 쿠키 설정하기  
+                var setCookie = function (cname, cvalue, exdays) {
+                    var todayDate = new Date();
+                    todayDate.setTime(todayDate.getTime() + (exdays*24*60*60*1000));    
+                    var expires = "expires=" + todayDate.toUTCString(); // UTC기준의 시간에 exdays인자로 받은 값에 의해서 cookie가 설정 됩니다.
+                    document.cookie = cname + "=" + cvalue + "; " + expires;
+                }
+
+                var couponClose = function(){
+                    if($("#todaycloseyn0").is(":checked") == true){
+                        setCookie("close","Y",1);   //기간( ex. 1은 하루, 7은 일주일)
+                    }
+                    $(".layer_popup_wrap").removeClass("show");
+                }
+
+
+                $(document).ready(function(){
+                    var cookiedata = document.cookie;
+                    if(cookiedata.indexOf("close=Y")<0){
+                        $(".layer_popup_wrap").addClass("show");
+                    }else{
+                        $(".layer_popup_wrap").removeClass("show");
+                    }
+                    $("#close").click(function(){
+                        couponClose();
+                    });
+                });
+            </script>
+        </div>
+        <!-- 2022-07-25 팝업 슬라이더 :: E -->
+    </div>
+</body>
+</html>
