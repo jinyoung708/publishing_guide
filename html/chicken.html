@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background: rgb(15 19 22);
+            font-family: 'Silkscreen', cursive;
+        }
+
+        h1 {
+            color: white;
+            font-size: 4rem;
+            position: absolute;
+            transition: all 0.1s ease-out;
+            top: -12rem;
+            left: -10rem;
+        }
+        h1::before {
+            content: "CHICKEN";
+            position: absolute;
+            font-size: 5rem;
+            left: -2rem;
+            top: -0.75rem;
+            opacity: 0.05;
+        }
+        h1::after {
+            font-family: "Font Awesome 5 Pro";
+            content: "\f0d7";
+            font-weight: 900;
+            color: #ecb729;
+            position: absolute;
+            top: 4rem;
+            left: calc(50% - 0.5rem);
+        }
+
+        #chicken {
+            transform: rotateX(-15deg) rotateY(20deg);
+            transform-style: preserve-3d;
+            position: relative;
+            left: 16rem;
+            top: 16rem;
+            transform-origin: 6rem 6rem;
+            transition: all 0.1s ease-out;
+        }
+        #chicken > div {
+            height: 6rem;
+            width: 6rem;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        #chicken .c2 {
+            position: absolute;
+            top: 6rem;
+        }
+        #chicken .c3 {
+            position: absolute;
+            transform: translateZ(2rem) translateY(2rem);
+        }
+        #chicken .c4 {
+            position: absolute;
+            top: 5rem;
+            transform: translateZ(6rem);
+        }
+        #chicken .c5 {
+            position: absolute;
+            top: 8.2rem;
+            transform: translateZ(4.5rem);
+        }
+        #chicken .c6 {
+            position: absolute;
+            top: 3.8rem;
+            transform: translateZ(2.05rem);
+        }
+        #chicken .c7 {
+            position: absolute;
+            top: 3.8rem;
+            left: 5rem;
+            transform: translateZ(2.05rem);
+        }
+        #chicken .c8 {
+            position: absolute;
+            top: 16rem;
+            left: 5rem;
+            transform: translateZ(-4rem);
+        }
+        #chicken .c9 {
+            position: absolute;
+            top: 16rem;
+            left: 0rem;
+            transform: translateZ(-4rem);
+        }
+        #chicken .c10 {
+            position: absolute;
+            top: 22rem;
+            left: -1rem;
+            transform: translateZ(-2rem);
+        }
+        #chicken .c11 {
+            position: absolute;
+            top: 22rem;
+            left: 4rem;
+            transform: translateZ(-2rem);
+        }
+        .cube {
+            position: relative;
+            width: 6rem;
+            height: 6rem;
+            transform-style: preserve-3d;
+        }
+        .cube.body {
+            width: 10rem;
+            height: 10rem;
+            left: -2rem;
+        }
+        .cube.head {
+            width: 6rem;
+            height: 8rem;
+        }
+        .cube.beak {
+            width: 5.8rem;
+            height: 1.5rem;
+            left: 0.1rem;
+        }
+        .cube.beak.bottom-beak {
+            top: 1.52rem;
+        }
+        .cube.comb {
+            width: 2rem;
+            height: 2rem;
+            left: 2rem;
+        }
+        .cube.eye {
+            width: 1rem;
+            height: 1rem;
+        }
+        .cube.leg {
+            width: 1rem;
+            height: 6rem;
+        }
+        .cube.foot {
+            width: 3rem;
+            height: 1rem;
+        }
+        .cube > div {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            transform-style: preserve-3d;
+            background-color: #fff;
+        }
+        .cube .top {
+            transform: rotateX(-90deg); 
+            transform-origin: 0 0;
+        }
+        .cube .bottom {
+            transform: rotateX(90deg);
+            transform-origin: 100% 100%;
+        }
+        .cube .left {
+            transform: rotateY(90deg);
+            transform-origin: 0 0;
+            background-color: #ddd;
+        }
+        .cube .right {
+            transform: rotateY(-90deg);
+            transform-origin: 100% 0;
+            background-color: #ddd;
+        }
+        .cube .back {
+            transform: translateZ(-6rem);
+            transform-origin: 0 50%;
+        }
+        .cube.body .back {
+            transform: translateZ(-10rem);
+        }
+        .cube.head .top {
+            height: 6rem;
+        }
+        .cube.beak > div,
+        .cube.leg > div,
+        .cube.foot > div {
+            background-color: #d8a51c;
+        }
+        .cube.beak .top {
+            height: 6rem;
+        }
+        .cube.beak .left,
+        .cube.leg .left,
+        .cube.foot .left {
+            background-color: #b68c1a;
+        }
+        .cube.comb > div {
+            background-color: #de2c42;
+        }
+        .cube.comb .left {
+            background-color: #a1192a;
+        }
+        .cube.eye > div {
+            background-color: #000;
+        }
+        .cube.eye .back {
+            transform: translateZ(-1rem);
+        }
+        .cube.leg .bottom {
+            display: none;
+        }
+        .cube.leg .back {
+            transform: translateZ(-1rem);
+        }
+        .cube.foot .top {
+            height: 3rem;
+            background-color: #aa8522;
+        }
+        .cube.foot .back {
+            transform: translateZ(-3rem);
+        }
+    </style>
+</head>
+<body>
+    <div id="chicken">
+        <h1>CHICKEN</h1>
+        <div class="c2">
+            <div class="cube body">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c3">
+            <div class="cube head">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c4 quack">
+            <div class="cube beak top-beak">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c4 quack-anti">
+            <div class="cube beak bottom-beak">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c5">
+            <div class="cube comb">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c6">
+            <div class="cube eye">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c7">
+            <div class="cube eye">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c8">
+            <div class="cube leg">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c9">
+            <div class="cube leg">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c10">
+            <div class="cube foot">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="c11">
+            <div class="cube foot">
+                <div class="top"></div>
+                <div class="front"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

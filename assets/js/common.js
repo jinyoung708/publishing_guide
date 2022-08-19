@@ -66,5 +66,38 @@ $(function(){
 
     hljs.highlightAll();
     hljs.initLineNumbersOnLoad();
+
+
+    /* right menu */
+    $('#realContent .container section').each(function (i) {
+		var conH3 = $(this).find('h3').text();
+		var rightMenuCon = '<li><a href="#">' + conH3 + '</a></li>';
+		$('.right_menu').append(rightMenuCon)
+		$('.right_menu li:first-child').addClass('active')
+		$('section').eq(i).attr('data-navNum', i);
+	});
+
+	$(window).on('scroll resize', function () {
+		$('#realContent .container section').each(function () {
+			var viewTop = $(window).scrollTop() + ($(window).height() * 0.4);
+			var elTop = $(this).offset().top;
+			var elBot = elTop + $(this).height();
+			var elNum = $(this).attr('data-navNUm');
+			var target = $('.right_menu li');
+			if ((elTop <= viewTop) && (elBot >= viewTop)) {
+				target.removeClass('active')
+				target.eq(elNum).addClass('active')
+			}
+		})
+	});
+	
+	$('.right_menu li a').on('click focus', function () {
+		var goTo = $(this).parent().index();
+		var goPos = $('section[data-navNum=' + goTo + ']').offset().top - ($(window).height() * 0.01);
+		$('html, body').stop().animate({
+			scrollTop: goPos
+		}, 300);
+		return false;
+	});
 });
 

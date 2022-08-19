@@ -156,11 +156,11 @@
   /* for block of code */
   /* 코드블럭 스크롤바 */
 }
-#content #realContent .container h2 {
+#content #realContent .container h3 {
   font-size: 24px;
   font-weight: 500;
 }
-#content #realContent .container h3 {
+#content #realContent .container h4 {
   font-size: 16px;
   font-weight: 500;
 }
@@ -270,8 +270,7 @@
   padding-left: 18px;
 }
 #content #realContent .container code::-webkit-scrollbar-corner {
-  background-color: transparent;
-  /* 가로세로 스크롤바 코너 투명 */
+  background-color: transparent; /* 가로세로 스크롤바 코너 투명 */
 }
 #content #realContent .container code::-webkit-scrollbar {
   /* 가로/세로 스크롤바의 너비 */
@@ -317,7 +316,6 @@
   #header .link_list li a {
     font-size: 1em;
   }
-
   #content {
     padding: 15px;
   }
