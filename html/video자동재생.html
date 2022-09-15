@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="youtubeArea"></div>
+    
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript">
+    var player;
+    function onYouTubeIframeAPIReady(){
+        player = new YT.Player('youtubeArea',{
+            videoId:'jXzaXyMyeiM',
+            playerVars:{'autoplay':1, 'playsinline':1, 'loop':1, 'playlist': 'jXzaXyMyeiM'},
+            events:{ 'onReady':onPlayerReady }
+        });
+    }
+    function onPlayerReady(e) {
+        e.target.mute();
+        e.target.playVideo();
+    }
+    </script>
+</body>
+</html>

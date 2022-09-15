@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        .box {position: relative; width: 264px; height: 136px;}
+        .box::before {display: inline-block; content:''; position: absolute; z-index: 1; left: 0; bottom: 0; width: 7px; height: 7px; border-radius: 50%; background-color: #000;}
+        .box::after {display: inline-block; content:''; position: absolute; right: 0; bottom: 0; width: 7px; height: 7px; border-radius: 50%; background-color: #000;}
+        .box .current {position: relative; width: 264px; height: 132px; overflow: hidden;}
+        .box .current .bar {position: absolute; left: 0; top: 0; width: 264px; height: 264px; border: 7px solid #000; border-radius: 50%; transition: transform 2s cubic-bezier(.215,.61,.355,1); transform: rotate(45deg);}
+        .box .circle {position: absolute; z-index: 1; left: 0; top: 0; width: 264px; height: 264px; transition: all 2s cubic-bezier(.215,.61,.355,1); transform: rotate(0);}
+        .box .circle span {position: absolute; z-index: 1; left: -6px; top: 50%; width: 20px; height: 20px; border-radius: 50%; background-color: purple; transform: translateY(-50%);}
+        .box.show::before {background-color: red;}
+        .box.show .current .bar {border-bottom-color: red; border-right-color: red;}
+    </style>
+</head>
+<body>
+    <div style="display: inline-block; padding: 30px; background-color: #eee;">
+        <div class="box">
+            <div class="current"><div class="bar"></div></div>
+            <div class="circle"><span></span></div>
+        </div>
+        <script>
+            $(function(){
+                var rotate1 = 0.5 * 180;
+                var rotate2 = rotate1 + 45;
+                $(".box").addClass("show");
+                $(".circle").css("transform", "rotate(" + rotate1 + "deg)");
+                $(".bar").css("transform", "rotate(" + rotate2 + "deg)");
+            });
+        </script>
+    </div>
+</body>
+</html>
